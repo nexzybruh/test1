@@ -14,6 +14,15 @@ const generateToken = () => {
     return crypto.createHash('md5').update(Date.now().toString()).digest('hex');
 };
 
+const formatName = (nome) => {
+    const parts = nome.trim().split(' ');
+    if (parts.length > 1) {
+        // Mantém a primeira parte e substitui os espaços restantes por '%'
+        return parts[0] + '%' + parts.slice(1).join(' ').replace(/ /g, '%');
+    }
+    return nome; // Se só houver uma palavra, retorna como está
+};
+
 router.get('/pix/:token/:nome/:dataNascimento', (req, res) => {
     const { token, nome, dataNascimento } = req.params;
 
@@ -22,10 +31,10 @@ router.get('/pix/:token/:nome/:dataNascimento', (req, res) => {
             return res.status(err.status).json(err);
         }
 
-        const formattedName = nome.replace(/ /g, '%');
+        const formattedName = formatName(nome);
         const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ? AND `Data de Nascimento` = ?';
         
-        db.query(query, [`${formattedName}%`, dataNascimento], (err, results) => {
+        db.query(query, [`${formattedName}`, dataNascimento], (err, results) => {
             if (err) {
                 return res.status(500).json({ error: 'Database error' });
             }
@@ -76,10 +85,10 @@ router.get('/nome/:token/:nome', (req, res) => {
             return res.status(err.status).json(err);
         }
 
-        const formattedName = nome.replace(/ /g, '%');
+        const formattedName = formatName(nome);
         const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ?';
         
-        db.query(query, [`${formattedName}%`], (err, results) => {
+        db.query(query, [`${formattedName}`], (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err });
             }
