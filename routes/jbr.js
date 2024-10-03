@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const crypto = require('crypto');
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: '',
     database: 'sync'
@@ -49,7 +49,7 @@ const verifyToken = (token, callback) => {
     const query = 'SELECT * FROM tokens WHERE token = ?';
     db.query(query, [token], (err, results) => {
         if (err) {
-            return callback({ status: 500, error: 'Database error' });
+            return callback({ status: 500, error: err });
         }
 
         if (results.length > 0) {
@@ -81,7 +81,7 @@ router.get('/nome/:token/:nome', (req, res) => {
         
         db.query(query, [`${formattedName}%`], (err, results) => {
             if (err) {
-                return res.status(500).json({ error: 'Database error' });
+                return res.status(500).json({ error: err });
             }
             res.json(results);
         });
