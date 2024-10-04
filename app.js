@@ -1,9 +1,18 @@
 const express = require('express');
 const mysql = require('mysql');
 const jbrRouter = require('./routes/jbr');
+const path = require('path'); // Import path module
 
 const app = express();
 app.use(express.json());
+
+// Serve static files from the public_html directory
+app.use(express.static(path.join(__dirname, 'public_html')));
+
+// Serve index.html at the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public_html', 'index.html'));
+});
 
 app.use('/receita', jbrRouter);
 
@@ -50,5 +59,5 @@ const verifyToken = (token, callback) => {
 };
 
 app.listen(80, () => {
-    console.log('[!] server running on http://localhost:8001');
+    console.log('[!] server running on http://localhost:80');
 });

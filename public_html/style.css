@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a
+.textBox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.textBox input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 300px; /* Largura do campo de entrada */
+    border: 2px solid #00bfff;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.textBox input:focus {
+    border-color: #ff5733;
+}
+
+.textBox p {
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.textBox p a {
+    color: #00bfff;
+    text-decoration: none;
+}
+
+.textBox p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .textBox input {
+        width: 90%; /* Ajustar a largura em telas pequenas */
+    }
+}
+
+body{
+    color: #fff;
+    background: #111;
+    font-family: 'Poppins',sans-serif;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    backdrop-filter: blur(1px);
+    pointer-events: none;
+}
+
+.container nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 40px;
+    height: 100px;
+    align-items: center;
+}
+
+.container nav h1{
+    font-size: 2.6em;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    pointer-events: all;
+    letter-spacing: 4px;
+}
+
+.container nav h1 span{
+    color: #00bfff;
+}
+
+.container nav ul{
+    display: flex;
+}
+
+.container nav ul li{
+    position: relative;
+    list-style: none;
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 12px 18px;
+    cursor: pointer;
+    pointer-events: all;
+    overflow: hidden;
+}
+
+.container nav ul li::after{
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    width: 0%;
+    height: 3px;
+    left: 50%;
+    background: #00bfff;
+    transform: translateX(-50%);
+    transition: .3s;
+}
+
+.container nav li:hover{
+    color: #00bfff;
+}
+
+.container nav li:hover::after{
+    width: 80%;
+}
+
+.container section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    text-align: center;
+    pointer-events: none;
+}
+
+.textBox h1{
+    font-size: 3.4em;
+}
+
+.textBox h1 span{
+    color: #00bfff;
+}
+
+.textBox p{
+    font-size: 1.2em;
+}
+
+.textBox .homeBtn{
+    font-family: 'Poppins';
+    padding: 8px 18px;
+    margin: 16px 12px;
+    font-size: 26px;
+    background-color: transparent;
+    color: var(--i);
+    outline: none;
+    border: 3px solid var(--i);
+    border-radius: 4px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: .3s;
+    font-weight: 600;
+}
+
+.textBox .homeBtn:hover{
+    background-color: var(--i);
+    color: #000;
+}
+
+.bgAnimation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    background: #1d1d1d;
+    filter: saturate(2);
+    overflow: hidden;
+}
+
+.colorBox{
+    z-index: 2;
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background: #1d1d1d;
+}
+
+.colorBox:hover{
+    background: #00bfff;
+    transition-duration: 0s;
+}
+
+.backgroundAmim{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #00bfff;
+    filter: blur(60px);
+    animation: animBack 6s linear infinite;
+}
+
+@keyframes animBack {
+    0%{
+        top: -60px;
+    }
+    100%{
+        top: 120%;
+    }
+}
+
+.planos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.planos h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.planos .plano {
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.planos h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.planos p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.buyBtn {
+    font-family: 'Poppins';
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #00bfff;
+    border: 2px solid #00bfff;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.buyBtn:hover {
+    background-color: #00bfff;
+    color: #000;
+}
+
+.homeBtn {
+    font-family: 'Poppins';
+    padding: 8px 18px;
+    margin: 16px 12px;
+    font-size: 26px;
+    background-color: transparent;
+    color: var(--i);
+    outline: none;
+    border: 3px solid var(--i);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+    font-weight: 600;
+}
+
+.homeBtn:hover {
+    background-color: var(--i);
+    color: #000;
+}
+
+
+
+.textBox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    pointer-events: all; 
+}
+
+.textBox input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 300px; 
+    border: 2px solid #00bfff;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    pointer-events: all; 
+}
+
+.textBox input:focus {
+    border-color: #ff5733;
+}
+
+.textBox p {
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.textBox p a {
+    color: #00bfff;
+    text-decoration: none;
+    pointer-events: all; 
+}
+
+.textBox p a:hover {
+    text-decoration: underline;
+}
+
+
+a {
+    color: inherit; 
+    text-decoration: none; 
+}
+
+
+@media (max-width: 768px) {
+    .textBox input {
+        width: 90%; 
+    }
+}
