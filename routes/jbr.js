@@ -17,13 +17,12 @@ const generateToken = () => {
 const formatName = (nome) => {
     const parts = nome.trim().split(' ');
     if (parts.length > 1) {
-        // Mantém a primeira parte e substitui os espaços restantes por '%'
-        return parts[0] + '%' + parts.slice(1).join(' ').replace(/ /g, '%');
+        return parts[0] + '%' + parts.slice(1).join(' ').replace(/ /g, '%') + '%';
     }
-    return nome; // Se só houver uma palavra, retorna como está
+    return nome + '%'; 
 };
 
-router.get('/pix/:token/:nome/:dataNascimento', (req, res) => {
+router.get('/datanasc/:token/:nome/:dataNascimento', (req, res) => {
     const { token, nome, dataNascimento } = req.params;
 
     verifyToken(token, (err) => {
@@ -32,9 +31,13 @@ router.get('/pix/:token/:nome/:dataNascimento', (req, res) => {
         }
 
         const formattedName = formatName(nome);
-        const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ? AND `Data de Nascimento` = ?';
         
-        db.query(query, [`${formattedName}`, dataNascimento], (err, results) => {
+        // Replace dashes with slashes in the date of birth
+        const formattedDate = dataNascimento.replace(/-/g, '/');
+        
+        const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ? AND `Data de Nascimento` = ? LIMIT 200';
+        
+        db.query(query, [`${formattedName}`, formattedDate], (err, results) => {
             if (err) {
                 return res.status(500).json({ error: 'Database error' });
             }
@@ -86,7 +89,7 @@ router.get('/nome/:token/:nome', (req, res) => {
         }
 
         const formattedName = formatName(nome);
-        const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ?';
+        const query = 'SELECT * FROM jbr_temp WHERE `Nome Completo` LIKE ? LIMIT 200';
         
         db.query(query, [`${formattedName}`], (err, results) => {
             if (err) {
@@ -105,7 +108,7 @@ router.get('/cpf/:token/:cpf', (req, res) => {
             return res.status(err.status).json(err);
         }
 
-        const query = 'SELECT * FROM jbr_temp WHERE `CPF` = ?';
+        const query = 'SELECT * FROM jbr_temp WHERE `CPF` = ? LIMIT 1';
         
         db.query(query, [cpf], (err, results) => {
             if (err) {
