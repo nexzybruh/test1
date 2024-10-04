@@ -2,7 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const jbrRouter = require('./routes/jbr');
 const path = require('path'); // Import path module
-
+const loginRouter = require('./routes/login');
+const spRouter = require('./routes/sp');
 const app = express();
 app.use(express.json());
 
@@ -13,9 +14,11 @@ app.use(express.static(path.join(__dirname, 'public_html')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public_html', 'index.html'));
 });
-
+const homeApiRouter = require('./routes/homeApi');
+app.use('/dashboardapi/', homeApiRouter);
 app.use('/receita', jbrRouter);
-
+app.use('/auth', loginRouter);
+app.use('/sp', spRouter); 
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
