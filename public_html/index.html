@@ -1,51 +1,206 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncData</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SyncData - API de Consultas de Dados</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
-<body>
-    <div class="bgAnimation" id="bgAnimation">
-        <div class="backgroundAmim"></div>
-    </div>
-    <div class="container">
-        <nav>
-            <h1><span>Sync</span>DATA</h1>
-            <ul>
-                <li><a href="login.html">Entrar</a></li>
-            </ul>
-        </nav>
-        <section>
-            <div class="textBox">
-                <h1><span>Sua solução para</span> APIs</h1>
-                <p>APIs rápidas, seguras e confiáveis para aumentar as bases do seu painel/bot.</p>
-                <button class="homeBtn" style="--i:#00bfff;" id="planosBtn">Ver Planos</button>
+<body class="is-boxed has-animations">
+    <div class="body-wrap">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo SyncData">
+                            </a>
+                        </h1>
+                    </div>
+                </div>
             </div>
-        </section>
-        <div class="planos" id="planos" style="display: none;">
-            <h2>Nossos Planos</h2>
-            <div class="plano">
-                <h3>Plano Diário</h3>
-                <p>Acesso por 24 horas</p>
-                <button class="buyBtn">Comprar</button>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h1 class="hro-title mt-0">SyncData</h1>
+                            <p class="hero-paragraph">Sua solução para consultas de dados de veículos, pessoas físicas e jurídicas.</p>
+                            <div class="hero-cta">
+                                <a class="button button-primary" href="#">Comece agora</a>
+                                <a class="button" href="#">Login</a>
+                            </div>
+                        </div>
+                        <div class="hero-figure anime-element">
+                            <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+                                <rect width="528" height="396" style="fill:transparent;" />
+                            </svg>
+                            <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+                            <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+                            <div class="hero-figure-box hero-figure-box-05"></div>
+                            <div class="hero-figure-box hero-figure-box-06"></div>
+                            <div class="hero-figure-box hero-figure-box-07"></div>
+                            <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+                            <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+                            <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-wrap">
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-01.svg" alt="Feature 01">
+                                    </div>
+                                    <h4 class="feature-title mt-24">Consulta Rápida</h4>
+                                    <p class="text-sm mb-0">Realize consultas rápidas de veículos e pessoas com um simples clique.</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-02.svg" alt="Feature 02">
+                                    </div>
+                                    <h4 class="feature-title mt-24">API Poderosa</h4>
+                                    <p class="text-sm mb-0">Integrar a SyncData em seu sistema é simples e eficaz.</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-03.svg" alt="Feature 03">
+                                    </div>
+                                    <h4 class="feature-title mt-24">Dados Confiáveis</h4>
+                                    <p class="text-sm mb-0">Acesse dados atualizados e precisos sobre veículos e indivíduos.</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-04.svg" alt="Feature 04">
+                                    </div>
+                                    <h4 class="feature-title mt-24">Suporte Dedicado</h4>
+                                    <p class="text-sm mb-0">Nossa equipe está pronta para ajudar com qualquer dúvida ou problema.</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-05.svg" alt="Feature 05">
+                                    </div>
+                                    <h4 class="feature-title mt-24">Interface Intuitiva</h4>
+                                    <p class="text-sm mb-0">Navegação simples e interface amigável para facilitar suas consultas.</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img src="dist/images/feature-icon-06.svg" alt="Feature 06">
+                                    </div>
+                                    <h4 class="feature-title mt-24">Resultados em Tempo Real</h4>
+                                    <p class="text-sm mb-0">Receba resultados instantâneos para suas consultas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pricing section">
+                <div class="container-sm">
+                    <div class="pricing-inner section-inner">
+                        <div class="pricing-header text-center">
+                            <h2 class="section-title mt-0">Planos Acessíveis</h2>
+                            <p class="section-paragraph mb-0">Escolha um plano que se adapta às suas necessidades de consulta.</p>
+                        </div>
+                        <div class="pricing-tables-wrap">
+                            <div class="pricing-table">
+                                <div class="pricing-table-inner is-revealing">
+                                    <div class="pricing-table-main">
+                                        <div class="pricing-table-header pb-24">
+                                            <div class="pricing-table-price"><span class="pricing-table-price-currency h2">$</span><span class="pricing-table-price-amount h1">49</span><span class="text-xs">/mês</span></div>
+                                        </div>
+                                        <div class="pricing-table-features-title text-xs pt-24 pb-24">O que você recebe</div>
+                                        <ul class="pricing-table-features list-reset text-xs">
+                                            <li>
+                                                <span>Consulta ilimitada de veículos</span>
+                                            </li>
+                                            <li>
+                                                <span>Acesso a dados de pessoas físicas e jurídicas</span>
+                                            </li>
+                                            <li>
+                                                <span>Suporte técnico prioritário</span>
+                                            </li>
+                                            <li>
+                                                <span>Atualizações constantes da API</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="pricing-table-cta mb-8">
+                                        <a class="button button-primary button-shadow button-block" href="#">Assine agora</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta section">
+                <div class="container">
+                    <div class="cta-inner section-inner">
+                        <h3 class="section-title mt-0">Precisa de um plano melhor?</h3>
+                        <div class="cta-cta">
+                            <a class="button button-primary button-wide-mobile" href="https://t.me/imitei">Entre em contato</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                            <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo SyncData">
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="https://t.me/sync_data">Contato</a>
+                        </li>
+                        <li>
+                            <a href="#">Sobre nós</a>
+                        </li>
+                        <li>
+                            <a href="termos">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/sync_data">Suporte</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="footer-copyright">&copy; 2024 SyncData, todos os direitos reservados</div>
+                </div>
             </div>
-            <div class="plano">
-                <h3>Plano Semanal</h3>
-                <p>Acesso por 7 dias</p>
-                <button class="buyBtn">Comprar</button>
-            </div>
-            <div class="plano">
-                <h3>Plano Mensal</h3>
-                <p>Acesso por 30 dias</p>
-                <button class="buyBtn">Comprar</button>
-            </div>
-            <button class="homeBtn" style="--i:#ff5733;" id="closeBtn">Fechar</button>
-        </div>
+        </footer>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="dist/js/main.min.js"></script>
 </body>
 </html>
