@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SyncData - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/style.css">
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <style>
+        @media (max-width: 768px) {
+            .hero-inner {
+                display: none;
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: rgba(30, 30, 30, 0.9);
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            max-height: 80vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <img class="header-logo-image" src="../dist/images/logo.svg" alt="Logo SyncData">
+                            </a>
+                        </h1>
+                    </div>
+                    <nav class="site-nav">
+                        <ul class="nav list-reset">
+                            
+                           
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h1 class="hro-title mt-0">Bem-vindo a SyncData!</h1>
+                            <p class="hero-paragraph">Aqui você pode ver e configurar suas rotas.</p>
+                        </div>
+                        <div class="hero-figure anime-element">
+                            <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+                                <rect width="528" height="396" style="fill:transparent;"></rect>
+                            </svg>
+                            <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+                            <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+                            <div class="hero-figure-box hero-figure-box-05"></div>
+                            <div class="hero-figure-box hero-figure-box-06"></div>
+                            <div class="hero-figure-box hero-figure-box-07"></div>
+                            <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+                            <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+                            <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-wrap">
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <h4 class="feature-title mt-24">Total de Consultas</h4>
+                                    <p id="total-consultas" class="text-sm mb-0">Carregando...</p>
+                                </div>
+                            </div>
+                            <div class="feature text-center is-revealing">
+                                <div class="feature-inner">
+                                    <h4 class="feature-title mt-24">APIs Disponíveis</h4>
+                                    <div id="api-list" class="text-sm mb-0">Carregando...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta section">
+                <div class="container">
+                    <div class="cta-inner section-inner">
+                        <h3 class="section-title mt-0">Precisa de ajuda?</h3>
+                        <div class="cta-cta">
+                            <a class="button button-primary button-wide-mobile" href="https://t.me/sync_data">Entre em contato</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                            <img class="header-logo-image" src="../dist/images/logo.svg" alt="Logo SyncData">
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li><a href="https://t.me/sync_data">Contato</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="https://t.me/sync_data">Suporte</a></li>
+                    </ul>
+                    <div class="footer-copyright">&copy; 2024 SyncData, todos os direitos reservados</div>
+                </div>
+            </div>
+        </footer>
+
+        <div id="api-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h4 id="modal-title"></h4>
+                <pre id="modal-route"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="../dist/js/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = getCookie('token');
+
+            if (!token) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            const apiList = document.getElementById('api-list');
+
+            fetch(`../dashboardapi/consultations/${token}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('total-consultas').textContent = `${data.total} consultas realizadas hoje.`;
+                })
+                .catch(error => console.error('Erro ao obter o total de consultas:', error));
+
+            fetch(`../dashboardapi/routes`)
+                .then(response => response.json())
+                .then(data => {
+                    apiList.innerHTML = '';
+                    data.forEach(api => {
+                        const apiDescription = document.createElement('div');
+                        const apiName = document.createElement('h5');
+                        apiName.textContent = api.name;
+                        apiName.style.cursor = 'pointer';
+                        apiName.onclick = function() {
+                            const routeWithToken = api.route.replace(/<token>/g, token);
+                            showModal(api.name, routeWithToken);
+                        };
+                        apiDescription.appendChild(apiName);
+                        apiList.appendChild(apiDescription);
+                    });
+                })
+                .catch(error => console.error('Erro ao obter as APIs disponíveis:', error));
+
+            function showModal(name, route) {
+                document.getElementById('modal-title').textContent = name;
+                document.getElementById('modal-route').textContent = route;
+                document.getElementById('api-modal').style.display = 'flex';
+            }
+
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            document.querySelector('.close').onclick = function() {
+                document.getElementById('api-modal').style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                const modal = document.getElementById('api-modal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -7,6 +7,7 @@
     <title>Login - SyncData</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
         body {
             background-color: #f4f4f4;
@@ -23,14 +24,14 @@
             margin: 10px 0;
             border: 2px solid #0270D7;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente */
-            color: #fff; /* Cor do texto */
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
             font-size: 16px;
             transition: border-color 0.3s;
-            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+            backdrop-filter: blur(5px);
         }
         .input::placeholder {
-            color: rgba(255, 255, 255, 0.7); /* Cor do placeholder */
+            color: rgba(255, 255, 255, 0.7);
         }
         .input:focus {
             border-color: #005bb5;
@@ -74,8 +75,8 @@
                         <div class="hero-copy">
                             <h1 class="hro-title mt-0">Login</h1>
                             <p class="hero-paragraph">Insira seu token para acessar sua conta.</p>
-                            <form class="login-form">
-                                <input type="text" class="input" placeholder="Token de Acesso" required>
+                            <form class="login-form" id="loginForm">
+                                <input type="text" class="input" id="tokenInput" placeholder="Token de Acesso" required>
                                 <div class="hero-cta">
                                     <button class="button" type="submit">Acessar</button>
                                 </div>
@@ -94,7 +95,7 @@
                             <div class="hero-figure-box hero-figure-box-07" style="transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(20deg);"></div>
                             <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg" style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
                             <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg" style="transform: rotate(-52deg) scale(1); opacity: 1;"></div>
-                            <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg" style="transform: rotate(-50deg) scale(1); opacity: 1;"></div>
+                            <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg" style="transform: rotate(-50deg) opacity: 1;"></div>
                         </div>
                     </div>
                 </div>
@@ -109,12 +110,48 @@
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo SyncData">
                         </a>
                     </div>
-                    <div class="footer-copyright">&copy; 2024 SyncData, todos os direitos reservados</div>
+                    <div class="footer-copyright">&copy; 2023 SyncData, todos os direitos reservados</div>
                 </div>
             </div>
         </footer>
     </div>
 
-    <script src="dist/js/main.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(event) {
+                event.preventDefault();
+                
+                const token = $('#tokenInput').val();
+                
+                $.ajax({
+                    url: `/auth/login/${token}`,
+                    method: 'GET',
+                    success: function(response) {
+                        if (response.message === "Login successful") {
+                            document.cookie = `token=${response.userId.token}; path=/;`;
+                            window.location.href = '/home';
+                        } else {
+                            Swal.fire({
+                                title: 'Erro!',
+                                text: 'Token inválido ou erro no login.',
+                                icon: 'error',
+                                confirmButtonText: 'Tente Novamente'
+                            });
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            title: 'Erro!',
+                            text: 'Houve um problema com a requisição. Tente novamente.',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
