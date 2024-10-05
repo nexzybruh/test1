@@ -185,24 +185,25 @@
                 })
                 .catch(error => console.error('Erro ao obter o total de consultas:', error));
 
-            fetch(`../dashboardapi/routes`)
-                .then(response => response.json())
-                .then(data => {
-                    apiList.innerHTML = '';
-                    data.forEach(api => {
-                        const apiDescription = document.createElement('div');
-                        const apiName = document.createElement('h5');
-                        apiName.textContent = api.name;
-                        apiName.style.cursor = 'pointer';
-                        apiName.onclick = function() {
-                            const routeWithToken = api.route.replace(/<token>/g, token);
-                            showModal(api.name, routeWithToken);
-                        };
-                        apiDescription.appendChild(apiName);
-                        apiList.appendChild(apiDescription);
-                    });
-                })
-                .catch(error => console.error('Erro ao obter as APIs disponíveis:', error));
+                fetch(`../dashboardapi/routes`)
+    .then(response => response.json())
+    .then(data => {
+        apiList.innerHTML = '';
+        data.forEach(api => {
+            const apiDescription = document.createElement('div');
+            const apiName = document.createElement('h5');
+            apiName.textContent = api.name;
+            apiName.style.cursor = 'pointer';
+            apiName.onclick = function() {
+                const routeWithToken = api.route.replace(/<token>/g, token).replace(/\n/g, ' ');
+                showModal(api.name, routeWithToken);
+            };
+            apiDescription.appendChild(apiName);
+            apiList.appendChild(apiDescription);
+        });
+    })
+    .catch(error => console.error('Erro ao obter as APIs disponíveis:', error));
+
 
             function showModal(name, route) {
                 document.getElementById('modal-title').textContent = name;
